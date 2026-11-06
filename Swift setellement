@@ -1,0 +1,26 @@
+import requests
+
+API_URL = "YOUR_BANK_PROVIDED_SWIFT_API_URL"
+
+payload = {
+    "beneficiary_bank": "Bank of Baroda",
+    "account_number": "YOUR_FULL_ACCOUNT_NUMBER",
+    "ifsc": "BARB0CAKAX",
+    "currency": "INR",
+    "amount": 1000,
+    "purpose": "International Bank Transfer"
+}
+
+headers = {
+    "Authorization": "Bearer YOUR_BANK_API_TOKEN",
+    "Content-Type": "application/json"
+}
+
+response = requests.post(
+    API_URL,
+    json=payload,
+    headers=headers
+)
+
+print(response.status_code)
+print(response.text)
